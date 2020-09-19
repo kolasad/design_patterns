@@ -8,7 +8,7 @@ def should_visit_doctor(days_from_last_visit, diseases: list = None):
     :param diseases:
     :return:
     """
-    number_of_diseases = len(diseases) if diseases else 0
+    number_of_diseases = len(diseases) if diseases else 0  # get number of diseases if exists
 
     if days_from_last_visit > 1 and number_of_diseases > 3:
         return True
@@ -17,10 +17,16 @@ def should_visit_doctor(days_from_last_visit, diseases: list = None):
     return False
 
 
-print(should_visit_doctor(3, ['a', 'b', 'c', 'd']))
-print(should_visit_doctor(9))
-print(should_visit_doctor(12))
+assert should_visit_doctor(3, diseases=['a', 'b', 'c', 'd']) is True
+assert should_visit_doctor(9) is False
+assert should_visit_doctor(12) is True
 
-# snake_case
-# CamelCase
-# pascalCase
+
+last_visited = True
+if last_visited:
+    print('True')
+
+names = []
+if names:
+    print(names)  # will not print empty list
+
