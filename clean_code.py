@@ -9,7 +9,9 @@ import os
 
 import requests
 
-from constants import REQUIRED_DAYS_FROM_LAST_VISIT
+from constants import (
+    DISEASES_LIMIT_FOR_VISIT, REQUIRED_DAYS_FROM_LAST_VISIT, YESTERDAY_VISIT
+)
 from main import check_name
 
 
@@ -24,7 +26,7 @@ def should_visit_doctor(days_from_last_visit, diseases: list = None):
         len(diseases) if diseases else 0
     )  # get number of diseases if exists
 
-    if days_from_last_visit > 1 and number_of_diseases > 3:
+    if days_from_last_visit > YESTERDAY_VISIT and number_of_diseases > DISEASES_LIMIT_FOR_VISIT:
         return True
     elif days_from_last_visit > REQUIRED_DAYS_FROM_LAST_VISIT:
         return True
