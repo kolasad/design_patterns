@@ -1,8 +1,8 @@
-
 # replace Sam in sentence with John
-sentence = 'Sam did it!'
+sentence = "Sam did it!"
 # CLEAN CODE
-sentence = sentence.replace('Sam', 'John')
+sentence = sentence.replace("Sam", "John")
+print(sentence)
 
 # NO CLEAN CODE
 # sentence = list(sentence)
@@ -14,8 +14,10 @@ sentence = sentence.replace('Sam', 'John')
 
 
 numbers = [2, 3, 15, 1, 150, 12]
-print(f'Liczby przed sortowaniem: {numbers}')
-print(f'Wynik sorted: {sorted(numbers)}')
-print(f'Liczby po sortowaniu sorted bez przypisania: {numbers}')
-print(f'Wynik .sort(): {numbers.sort()}')
-print(f'Liczby po sortowaniu .sort(): {numbers}')
+print(f"Liczby przed sortowaniem: {numbers}")
+print(f"Wynik sorted: {sorted(numbers)}")
+print(f"Liczby po sortowaniu sorted bez przypisania: {numbers}")
+print(f"Wynik .sort(): {numbers.sort()}")
+print(
+    f"Liczby po sortowaniu .sort(): {numbers}"
+)  # noqa: E501  # no quality assurance - ignorujemy blad flake8 o kodzie W292
