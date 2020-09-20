@@ -45,13 +45,18 @@ class DrinkPurchase:
         pass
 
 
-# TODO fill in buy methods
 class CoffeePurchase(DrinkPurchase):
     def buy(self, cost):
-        pass
+        print(f'Buying coffee, cost: {cost}')
+        return Coffee()
 
 
 class TeaPurchase(DrinkPurchase):
     def buy(self, cost):
-        pass
+        print(f'Buying tea, cost {cost}')
+        return Tea()
 
+
+tea_cost = 12
+print(TeaPurchase().buy(tea_cost))
+print(CoffeePurchase().buy(14))
