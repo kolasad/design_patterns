@@ -18,18 +18,28 @@ class JWTAuthentication(Authentication):
         return True  # we assume that JWT token auth works
 
 
-class ChainAuthenticationElement:
+class ChainAuthentication:
     def __init__(self, authentication_handler, next=None):
         self._authentication_handler = authentication_handler
         self._next = next
 
     def authenticate(self):
+        print(f'Authentication: {self._authentication_handler.__class__.__name__}')
         if self._authentication_handler.authenticate():
-            print(f'Authentication: {self._authentication_handler.__class__.__name__}')
             return True
         else:
             return self._next and self._next.authenticate()
 
+
+jwt = JWTAuthentication()
+token = TokenAuthentication()
+basic_auth = UserNameAuthentication()
+
+last_element = ChainAuthentication(jwt)
+second_element = ChainAuthentication(token, last_element)
+first_element = ChainAuthentication(basic_auth, second_element)
+
+print(first_element.authenticate())
 
 
 
